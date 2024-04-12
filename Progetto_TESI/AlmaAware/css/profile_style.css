@@ -1,0 +1,142 @@
+main {
+    background-image: url(../images/medias/bubble/Flower.svg);
+    background-repeat: no-repeat;
+    background-position: left top; 
+    background-size:30vh;
+    /*min-height: 100vh; /* Imposta l'altezza minima per coprire l'intera altezza della finestra del browser */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /*padding-bottom: 0px; /* Aggiunge uno spazio alla parte inferiore del main per far spazio all'immagine di sfondo */
+    
+    margin:0;
+    padding:0;
+    height : calc(100vh - 6vh - 8vh);
+  }
+body{
+    margin:0;
+    padding:0;
+}
+
+.img{
+    box-shadow: 5px 5px 10px #BB2E29;
+    width : 30%;
+    height : 100px;
+    margin-top: 15%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+h1{
+    margin-top: 10%;
+    margin-bottom: 5%;
+    font-family:'Viga', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+.title {
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 300px;
+margin-left: auto;
+margin-right: auto;
+}
+.btn-container{
+display: flex;
+justify-content: space-evenly;
+width : 100vw;
+}
+  
+form{
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+min-height : 40vh;
+width: 100%; 
+}
+
+.select {
+border: 1.5px solid #F0EDE8;
+border-radius: 50px;
+height: 40px;
+/*width: 73vw;*/
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+margin-bottom: 4%;
+}
+
+.label {
+margin-bottom: 1%;
+font-family: 'Inter',sans-serif ;
+font-weight: 300;
+}
+
+.input {
+border: 1.5px solid #bb2e29;
+border-radius: 50px;
+height: 30px;
+/*width: 70vw;*/
+padding: 5px;
+color: black;
+margin-bottom: 3%;
+font-style: normal;
+}
+
+.label{
+margin-bottom : 1%;
+}
+
+@media (min-width: 1250px) {
+.input{
+width : 20vw;
+height : 4vh;
+border-radius : 50px;
+font-size: 25px;
+font-weight: 400;
+border-color : #bb2e29;
+padding : 5px 12px; 
+}
+}
+
+.btn-grey {
+background-color: #F0EDE8;
+border-radius: 25px;
+width: 100px;
+height: 30px;
+color: black;
+border : none;
+font-weight: bold;
+margin-bottom: 2%;
+}
+
+.div{
+    background-color: #F0EDE8;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    height : 5vh;
+    width:100%;
+    
+    position:sticky;
+    top :0;
+    left:0;
+    
+    /* box-shadow : X Y blur Spreat Color */
+    box-shadow:  0px -4px 10px 0px rgba(0, 0, 0, 0.15);
+  
+  }
+  
+.p{
+font-weight: bold;
+width : 100%;
+text-align: center;
+}
+  
+  /*@media (min-width: 1250px) {
+  
+  }*/

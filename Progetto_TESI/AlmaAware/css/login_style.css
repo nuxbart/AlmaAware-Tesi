@@ -1,0 +1,85 @@
+main {
+  background-image: url(../images/medias/bubble/Flower.svg),url(../images/medias/bubble/signUp_bubble.svg);
+  background-repeat: no-repeat;
+  background-position: left top, left bottom; 
+  background-size:30vh;
+  height: 100vh;
+  display : flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+.sign-link{
+  font-weight: bold;
+  color:#bb2e29;
+  text-decoration: none;
+}
+.link{
+  color : black;
+  text-decoration: underline;
+  padding:0;
+  margin:0;
+}
+
+.link-container{
+  display: flex;
+  align-content: center;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height : 40vh;
+}
+.button {
+    border-radius: 25px;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-unibo {
+  background-color: #bb2e29;
+  border : none;
+  color:white;
+  font-weight: bold;
+}
+  
+.btn-unibo-outline {
+border : 1.5px solid #bb2e29;
+color:#bb2e29;
+font-weight: bold;
+background-color: transparent;
+}
+  
+.input {
+  border: 1.5px solid #bb2e29;
+  border-radius: 50px;
+  margin-top: 20px;
+  height: 5%;
+  width: 70vw;
+  padding: 0;
+  color: black;
+  margin-bottom: 10%;
+  text-align: center;
+  font-size: 70%;
+  font-weight: 70%;
+}
+
+label{
+    margin-bottom : 1%;
+}
+
+@media (min-width: 1250px) {
+    .input{
+    width : 20vw;
+    height : 4vh;
+    border-radius : 50px;
+    font-size: 25px;
+    font-weight: 400;
+    border-color : #bb2e29;
+    padding : 5px 12px; 
+    }
+}
