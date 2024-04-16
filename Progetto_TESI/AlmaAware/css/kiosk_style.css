@@ -1,0 +1,116 @@
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 5vw 70vw 25vw;
+    grid-template-areas: "Menu Sdg Action";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+  
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 50%;
+  }
+  
+  main::after {
+    content: "";
+    width: 20vw;
+    height: 25vh;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  
+    /*** COLOR BUBBLE *****/
+    -webkit-mask-image: url(../images/medias/bubble/kiosk_bubble_bottom.svg);
+    mask-image: url(../images/medias/bubble/kiosk_bubble_bottom.svg);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  
+    /*** LINE BUBBLE *****/
+    background-image: url(../images/medias/bubble/kiosk_bubble_bottom_line.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  h1 {
+    font-size: 60px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+  p,
+  span {
+    font-size: 24px;
+  }
+  
+  span {
+    font-weight: bold;
+    margin-bottom : 1%;
+  }
+  
+  .kiosk-desc{
+    display: flex;
+    flex-direction: column;
+    width : 80%;
+    margin : 0 auto 1% auto;
+    box-sizing: border-box;
+  }
+  .sdg-container {
+    grid-area: Sdg;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+  }
+  
+  .sdg-item {
+    width: 80%;
+    margin: 8% auto 0 auto;
+    height: 30vh;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items:end;
+    box-sizing: border-box;
+  
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .sdg-item p {
+    color : white;
+    font-size : 14px;
+    margin : 0 1% 1% 0;
+  }
+  
+  .actions {
+    grid-area: Action;
+    background-color: #F0EDE8;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    /* add sgd border */
+    border-left: 5px solid;
+    border-image-source:url(../images/medias/SGD_lineVertical.svg);
+    border-image-slice:5;
+    border-image-repeat: stretch;
+    border-top: none;
+  
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 100%;
+  
+    padding: 2%;
+  }

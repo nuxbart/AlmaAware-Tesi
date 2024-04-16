@@ -130,5 +130,15 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
+
+    // Funzione che prende tutte le azioni utente del Sdg SPECIFICO
+    public function getActionsSdg($idgoalsdg){
+        $query = "SELECT * FROM useraction WHERE sdgId=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idgoalsdg);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
 }
 ?>
