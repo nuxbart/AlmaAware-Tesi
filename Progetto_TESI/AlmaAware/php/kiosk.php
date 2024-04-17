@@ -51,8 +51,8 @@
                     <h2>Cosa puoi fare tu?</h2>
                     <?php $actions = $dbh->getActionsSdg($currentSDG[0]['idgoalsdg']);?>
                     <?php foreach($actions as $action): ?>
-                        <ul><!-- MANCA CSS di QUESTO -->
-                            <li style="{ 'border-color': <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?> }">
+                        <ul>
+                            <li style="border-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>">
                                 <?php echo $action["description"]; ?>
                             </li>
                         </ul>
@@ -75,6 +75,38 @@
 </body>
 
 <style lang="css" scoped>
+    li {
+    border-width: 0 0 1.5px 0;
+    border-style: solid;
+    padding-bottom: 2px;
+    margin-bottom: 5%;
+    width : 60vw;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left : 2%;
+  }
+  
+li::before {
+    content: "";
+    background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;
+    display: inline-block;
+    width: 1.5em;
+    height : 1.2em;
+    margin-left: -1.6em;
+    margin-bottom : -0.2em;
+
+        /*** COLOR BUBBLE *****/
+    -webkit-mask-image: url(../images/medias/bubble/list_bubble.svg);
+    mask-image: url(../images/medias/bubble/list_bubble.svg);
+    -webkit-mask-size: 85%;
+    mask-size: 85%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
     .keyNumber_container {
   display: flex;
   flex-wrap: no wrap;
@@ -219,6 +251,17 @@
 .icon{
   margin-bottom : 50%;
   height: 125%;
+}
+
+li {
+      font-size: auto;
+      text-align: left;
+      box-sizing: border-box;
+    }
+ul {
+    box-sizing: border-box;
+    max-width: 80%;
+    margin: 0 auto;
 }
 }
 
