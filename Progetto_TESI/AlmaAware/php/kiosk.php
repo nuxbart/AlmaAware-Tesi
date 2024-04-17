@@ -45,7 +45,20 @@
                     numero, tocca la carta.
                     </p>
                     <!-- MANCA SOLO QUESTO -->
-                    <KeyCardsGroup :id="id.toString()"></KeyCardsGroup>
+                    <div class="keyCard_container">
+                    <button class="info" id="show-modal" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>">
+                        <h2 class="numberCardCourse numberCard"><?php echo $currentSDG[0]['coursesUnibo']; ?></h2>
+                        <p class="titleCard">corsi</p>
+                    </button>
+                    <button class="info" id="show-modal" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>">
+                        <h2 class="numberCardPubl numberCard"><?php echo $currentSDG[0]['publications']; ?></h2>
+                        <p class="titleCard">pubblicazioni(Unibo)</p>
+                    </button>
+                    <button class="info" id="show-modal" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>">
+                        <h2 class="numberCardProj numberCard"><?php echo $currentSDG[0]['projects']; ?></h2>
+                        <p class="titleCard">progetti</p>
+                    </button>
+                    </div>
                 </div>
                 <div>
                     <h2>Cosa puoi fare tu?</h2>
@@ -74,7 +87,80 @@
     <!--<script src="../js/?.js"></script> -->
 </body>
 
-<style lang="css" scoped>
+<style lang="css">
+.keyCard_container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 350px;
+  justify-content: center;
+  align-content: space-between;
+  padding: 0;
+}
+.info::before {
+  content: "";
+  background-image: url(../images/medias/pictos/info.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 20px;
+  width: 20px;
+  display: block;
+  position: relative;
+  top: 2%;
+  right: 2%;
+  box-sizing: border-box;
+}
+
+.numberCard {
+  font-family: 'Viga', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  position: relative;
+}
+.numberCardProj::before{ 
+  content: "";
+  height: 5vh;
+  width: 140px;
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 1%;
+  background-image: url(../images/medias/pictos/project.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;}
+
+.numberCardPubl::before{
+  content: "";
+  height: 5vh;
+  width: 140px;
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 1%;
+  background-image: url(../images/medias/pictos/publication.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.numberCardCourse::before {
+  content: "";
+  height: 5vh;
+  width: 140px;
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 1%;
+  background-image: url(../images/medias/pictos/course.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.titleCard {
+  font-size: 16px;
+  text-align: center;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
     li {
     border-width: 0 0 1.5px 0;
     border-style: solid;
@@ -263,6 +349,13 @@ ul {
     max-width: 80%;
     margin: 0 auto;
 }
+
+.keyCard_container{
+    width:90%;
+    height : 35vh;
+    margin : 2% auto 10% auto;
+    align-content: center;
+  }
 }
 
 @media (max-width: 768px) {
