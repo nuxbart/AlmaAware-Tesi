@@ -40,7 +40,7 @@
         </form>
         
                         
-        <button onclick="checkPassword()" name="btnRegistrati" class="btn-unibo" type="btn-unibo" value="Register"> Registrati</button>
+        <button onclick="checkPassword()" name="btnRegistrati" class="btn-unibo" value="Register"> Registrati</button>
         <div class="link-container">
             <p class="link">Always an account?</p> <p class="sign-link"><a class="sign-link" href="login.php"> Sign in</a></p>
         </div>

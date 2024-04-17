@@ -32,28 +32,20 @@ form{
   justify-content: space-evenly;
   min-height : 40vh;
 }
-.button {
-    border-radius: 25px;
-    width: 100px;
-    height: 30px;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 .btn-unibo {
   background-color: #bb2e29;
   border : none;
   color:white;
   font-weight: bold;
+
+  border-radius: 25px;
+  width: 100px;
+  height: 30px;
+  text-decoration: none;
+  cursor: pointer;
 }
-  
-.btn-unibo-outline {
-border : 1.5px solid #bb2e29;
-color:#bb2e29;
-font-weight: bold;
-background-color: transparent;
-}
-  
+
 .input {
   border: 1.5px solid #bb2e29;
   border-radius: 50px;

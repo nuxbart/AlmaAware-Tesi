@@ -42,7 +42,7 @@
 
             <!-- Submit button -->
             <div class=" text-center row">
-                <button id="btn_submit" name="btn_submit" type="btn-unibo" class="btn-unibo">Login</button>
+                <button id="btn_submit" class="btn-unibo">Login</button>
             </div>
                             
 
