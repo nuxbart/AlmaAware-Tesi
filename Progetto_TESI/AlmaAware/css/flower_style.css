@@ -3,7 +3,27 @@
     transform: scale(1.25);
   }
   
-  .button{margin : 0 auto;}
+  .btnContainer{
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 200px; 
+  }
+  .button{
+    margin : 0 auto;
+  }
+
+  .btn-outline {
+    border-radius: 25px;
+    width: 100px;
+    height: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    border: 1.5px solid;
+    color : #bb2e29;
+    font-weight: bold;
+  }
   main {
     background-image: url(../images/medias/bubble/badges_bubble_left.svg);
     background-repeat: no-repeat;
@@ -21,8 +41,11 @@
   }
   
   .form-flower{
-    background-color: var(--principal);
-    border-top : var(--sdgLine-width) solid;
+    background-color: #F0EDE8;
+    border-top : 5px solid;
+    border-image-source:url(../images/medias/SGD_line.svg);
+    border-image-slice:5;
+    border-image-repeat: stretch;
     height : 50vh;
     width:100%;
   }
@@ -34,7 +57,7 @@
     width : 100%;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding : 1% 5%;
+    padding: 1% 5% 1% 10%; 
   }
   .input{
     background-color: transparent;
@@ -43,7 +66,7 @@
   }
   
   label{
-    font-weight: var(--bold);
+    font-weight: 300;
     margin-bottom : 1%;
   }
   
@@ -92,7 +115,7 @@
   }
 
   .input {
-    border: 1.5px solid var(--principal);
+    border: 1.5px solid #F0EDE8;
     border-radius: 50px;
     height: 30px;
     width: 70vw;
@@ -112,7 +135,7 @@
     border-radius : 50px;
     font-size: 25px;
     font-weight: 400;
-    border-color : var(--unibo);
+    border-color : #BB2E29;
     padding : 5px 12px; 
     }
   }

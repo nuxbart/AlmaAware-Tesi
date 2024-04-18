@@ -20,7 +20,7 @@
     <main>
 
         <div class="mobile-only-div">
-            <router-link v-if="backLink!=''" :to="'/home'"><arrowBackIcon></arrowBackIcon></router-link>
+        <a href="../php/home.php"><img src="../images/medias/components/icons/arrow-back.svg" class="icon"/></a>
             <p>Hi <?php echo $_SESSION["name"];?> !</p>
         </div>
 
