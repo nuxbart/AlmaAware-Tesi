@@ -28,32 +28,6 @@ main {
     color: white;
   }
 
-  /*Bandeau.vue*/
-  div{
-    background-color: var(--principal);
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-    height : 5vh;
-    width:100%;
-    
-    position:sticky;
-    top :0;
-    left:0;
-    /* SDG_line implement in style.css*/
-    border-bottom : var(--sdgLine-width) solid;
-    
-    /* box-shadow : X Y blur Spreat Color */
-    box-shadow: var(--box-shadow);
-  
-  }
-  
-  p{
-    font-weight: var(--bold);
-    width : 100%;
-    text-align: center;
-  }
-  
   @media (min-width: 1250px) {
   
   }
@@ -66,3 +40,5 @@ main {
   
     box-sizing: border-box;
   } 
+
+  

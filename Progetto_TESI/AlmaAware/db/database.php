@@ -66,6 +66,15 @@ class DatabaseHelper{
 
     // Funzioni di Update del profilo Utente
 
+    public function getIdUser($email){
+        $query = "SELECT `idUser` FROM `user` WHERE `email`=?"; 
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     // Update della password
     public function updatePass($password,$idUser) {
         $query = "UPDATE user SET password= ? WHERE idUser = ?";
@@ -140,5 +149,54 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
+
+    // Funzione che prende i badge SDG
+    public function getAllBadgeSdg(){
+        $query = "SELECT * FROM badge_sdg";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
+    // Funzione che prende il badge richiesto
+    public function getBadgeSdg($badgeName){
+        $query = "SELECT * FROM badge_sdg WHERE badgeName=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$badgeName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
+    // Funzione che prende i badge SDG di un utente
+    public function getAllBadgeSdgOfUser($idUser){
+        $query = "SELECT * FROM badgesusers WHERE idUser=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
+    // Funzione che prende i badge SDG di un utente con filtro valid/not valid
+    public function getAllBadgeValidNot($isvalid, $userSessionID){
+        $query = "SELECT * FROM badgesusers WHERE validated=? AND idUser=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$isvalid, $userSessionID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Funzione che prende i badge di un utente con filtro un determinato SDG
+    public function getAllBadgeOneSdg($i, $userSessionID){
+        $query = "SELECT * FROM badgesusers WHERE sdgID=? AND idUser=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$i, $userSessionID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
