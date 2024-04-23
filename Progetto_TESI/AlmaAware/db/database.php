@@ -191,7 +191,7 @@ class DatabaseHelper{
 
     // Funzione che prende i badge di un utente con filtro un determinato SDG
     public function getAllBadgeOneSdg($i, $userSessionID){
-        $query = "SELECT * FROM badgesusers WHERE sdgID=? AND idUser=?";
+        $query = "SELECT * FROM badgesusers WHERE idSdg=? AND idUser=?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$i, $userSessionID);
         $stmt->execute();

@@ -28,9 +28,9 @@ main {
     color: white;
   }
 
-  @media (min-width: 1250px) {
+  /*@media (min-width: 1250px) {
   
-  }
+  }*/
 
   /*BadgesList.vue, de qui devo prendere anche l'intera lista*/
   .badges-container{
