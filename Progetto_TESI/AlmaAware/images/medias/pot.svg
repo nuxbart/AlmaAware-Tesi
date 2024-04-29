@@ -1,0 +1,34 @@
+<svg id="pot-svg"
+    width="100%"
+    height="100%"
+    viewBox="0 0 181 124"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xml:space="preserve"
+    xmlns:serif="http://www.serif.com/"
+    style="
+      fill-rule: evenodd;
+      clip-rule: evenodd;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 1.5;
+    "
+  >
+    <g transform="matrix(1,0,0,1,-773.551,-247.684)">
+      <g id="pot">
+        <g transform="matrix(1,0,0,1,-1368.21,-925.016)">
+          <path id="path1"
+            d="M2160,1200C2160,1200 2158.39,1295.82 2184,1296C2212.65,1296.2 2252.08,1296.45 2280,1296C2305.61,1295.59 2304,1200 2304,1200L2160,1200Z"
+            style="stroke: rgb(126, 126, 125); stroke-width: 0.6px"
+          />
+        </g>
+        <g transform="matrix(1,0,0,1,-1368.21,-925.016)">
+          <path id="path2"
+            d="M2148,1176C2140.08,1177.13 2140.08,1198.87 2148,1200C2176,1204 2288,1204 2316,1200C2323.92,1198.87 2323.92,1177.13 2316,1176C2288,1172 2176,1172 2148,1176Z"
+            style="stroke: rgb(126, 126, 125); stroke-width: 0.6px"
+          />
+        </g>
+      </g>
+    </g>
+  </svg>

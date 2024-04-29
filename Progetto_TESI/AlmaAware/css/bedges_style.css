@@ -1,3 +1,7 @@
+h1{
+  margin-top : 7vh;
+  margin-bottom : 2vh;
+}
 main {
     background-image: url(../images/medias/bubble/badges_bubble_left.svg),
       url(../images/medias/bubble/badges_bubble_right.svg);

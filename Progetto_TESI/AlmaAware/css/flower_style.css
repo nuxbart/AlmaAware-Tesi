@@ -7,7 +7,8 @@
     display: flex;
     justify-content: center; /* Centra orizzontalmente */
     align-items: center; /* Centra verticalmente */
-    height: 200px; 
+    height: 0px; 
+    background-color: #F0EDE8;
   }
   .button{
     margin : 0 auto;
@@ -33,20 +34,28 @@
   } 
   
   h1{
-    margin-bottom : 10vh;
+    position:fixed;
+    top: 8%;
   }
+  
   .flower {
     width : 150px;
     height : 150px;
+    position:fixed;
+    top: 20%;
   }
   
   .form-flower{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #F0EDE8;
     border-top : 5px solid;
     border-image-source:url(../images/medias/SGD_line.svg);
     border-image-slice:5;
     border-image-repeat: stretch;
-    height : 50vh;
+    height :60%;
     width:100%;
   }
   
@@ -138,6 +147,7 @@
     border-color : #BB2E29;
     padding : 5px 12px; 
     }
+
   }
 
   .btn-outline {
@@ -148,21 +158,30 @@
   }
 
   .flower {
-    width : 150px;
-    height : 150px;
+    width : 100px;
+    height : 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 0px;
   }
+
   
   @media (min-width: 1250px) {
    /* param for the flower in the greenhouse*/
    .flower {
     width : 9vw;
     height : 9vw;
-  
   }
   }
+
+  .hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
 
   /* devo mettere dentro Plante.vue e Plot.vue */
   
