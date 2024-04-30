@@ -199,6 +199,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Funzione che prende l'idMyFlower dell utente in questione
     public function getIDFlower($emailUser){
         $query = "SELECT idMyFlower FROM user WHERE email=?";
         $stmt = $this->db->prepare($query);
@@ -208,6 +209,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
+    // Funzione che dato un idMyFlower restituisce le sue caratteristiche
     public function getUserFlower($idMyFlower){
         $query = "SELECT * FROM myflower WHERE idMyFlower=?";
         $stmt = $this->db->prepare($query);
@@ -217,7 +219,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
-    // Update TABLE MyFlower
+    // Update TABLE MyFlower Update
     public function updateFlowerColorPot($colorPot, $idMyFlower) {
         $query = "UPDATE myflower SET colorPot= ? WHERE idMyFlower = ?";
         $stmt = $this->db->prepare($query);
@@ -258,5 +260,13 @@ class DatabaseHelper{
         return $stmt->affected_rows > 0;
     }
 
+    //Funzione che prende tutti gli elementi della Table MyFlower
+    public function getAllFlowers(){
+        $query = "SELECT * FROM myflower ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
 }
 ?>
