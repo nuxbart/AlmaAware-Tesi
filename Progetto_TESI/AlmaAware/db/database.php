@@ -198,5 +198,65 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getIDFlower($emailUser){
+        $query = "SELECT idMyFlower FROM user WHERE email=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$emailUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
+    public function getUserFlower($idMyFlower){
+        $query = "SELECT * FROM myflower WHERE idMyFlower=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idMyFlower);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
+    // Update TABLE MyFlower
+    public function updateFlowerColorPot($colorPot, $idMyFlower) {
+        $query = "UPDATE myflower SET colorPot= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si',$colorPot, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function updateFlowerName($nameFlower, $idMyFlower) {
+        $query = "UPDATE myflower SET nameFlower= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $nameFlower, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function updateFlowerType1($boolType, $idMyFlower) {
+        $query = "UPDATE myflower SET typeFlower1= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$boolType, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function updateFlowerType2($boolType, $idMyFlower) {
+        $query = "UPDATE myflower SET typeFlower2= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$boolType, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
+    public function updateFlowerType3($boolType, $idMyFlower) {
+        $query = "UPDATE myflower SET typeFlower3= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$boolType, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
 }
 ?>
