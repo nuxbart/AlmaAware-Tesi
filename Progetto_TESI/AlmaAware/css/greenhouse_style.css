@@ -2,6 +2,7 @@ main {
   width: 100vw;
   height: 100vh;
   display: grid;
+  display : flex;
   grid-template-columns: 5vw auto;
   grid-template-areas: "Menu Greenhouse";
   margin: 0;
@@ -14,6 +15,7 @@ main {
 }
 .greenhouse {
   grid-area: Greenhouse;
+  position:fixed;
   display: grid;
   grid-template-areas: "shelfs" "podium";
   margin: 0;
@@ -23,6 +25,7 @@ main {
 }
 /****** ====== managment the shelf of the greenhouse ====== ******/
 .shelf {
+  position: relative;
   min-width: 95vw;
   max-width: auto;
   height: calc(74vh / 3);
@@ -81,12 +84,56 @@ main {
   background-image: url(../images/medias/Mascotte.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width: calc(100vw / 5);
-  height: calc(100vw / 4.5);
+  width: calc(100vw / 8);
+  height: calc(100vw / 6);
   padding: 0;
   position: absolute;
   bottom: 0;
   left: 5vw;
   border: none;
   background-color: transparent;
+}
+
+.flower {
+width : 5%;
+height : 5%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-bottom: 2%;
+}
+.flowerPodium{
+  width : 40%;/*5vw;*/
+  height : 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+@media (min-width: 1250px) {
+/* param for the flower in the greenhouse*/
+.flower {
+  width : 5%;/*5vw;*/
+  height : 5%;
+}
+.flowerPodium{
+  width : 40%;/*5vw;*/
+  height : 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 11%;
+}
+.greenhouse {
+  grid-area: Greenhouse;
+  display: grid;
+  grid-template-areas: "shelfs" "podium";
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 0;
+  position : absolute;
+  bottom :0;
+  right : 0;
+}
 }
