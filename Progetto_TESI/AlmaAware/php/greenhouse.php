@@ -25,6 +25,7 @@
             }
             
         </script>
+
         <title>AlmAware - GreenHouse</title>
         <link rel="shortcut icon" href="../images/medias/Mascotte.svg">
     </head>
@@ -127,9 +128,24 @@
                         <?php endif; ?>
                     </div>
                 </div>
+
                 <!-- button for add his flower-->
-            <button class="mascot" id="show-modal"></button>
-            <!-- add pop up to upload flower -->
+                <button class="mascot" id="show-modal"></button>
+
+                <!-- POP-UP -->
+                <div class="modal" id="modal">
+                    <div class="modal-body">
+                        <p style="font-size: 24px; font-weight: bold;">Enter your email to join the Unibo garden</p>
+                        <input type="mail" id="email" name="email" 
+                            value="<?php if(isset($_COOKIE["user_login"])) { echo $_COOKIE["user_login"]; } ?>" 
+                            class="col form-control input" placeholder="Email"/>
+                        <div class="btn-container">
+                            <button id="btn-unibo-outline" class="btn-unibo-outline">Cancel</button>
+                            <button id="btn-unibo" class="btn-unibo">Join</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <nav>
@@ -141,7 +157,17 @@
                 <a href="../php/greenhouse.php" class="desktop-only"><img src="../images/medias/components/icons/greenhouse.svg" class="icon"/></a>
             </nav>
         </main>
-        
+        <script>
+            // Funzione per aprire la finestra modale
+            document.getElementById('show-modal').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'flex';
+            });
+
+            // Funzione per chiudere la finestra modale
+            document.getElementById('btn-unibo-outline').addEventListener('click', function() {
+                document.getElementById('modal').style.display = 'none';
+            });
+        </script>
     </body>
 </html>
 

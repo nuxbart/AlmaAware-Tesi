@@ -1,1 +1,1 @@
-unibo color = #bb2e29;
+unibo color = #BB2E29;
