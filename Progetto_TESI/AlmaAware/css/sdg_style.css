@@ -1,0 +1,171 @@
+main {
+    position: relative; 
+    height: 100%;
+    background-image: url(../images/medias/bubble/student_bubble.svg);
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 17vh, 50vh, 35vh;
+    z-index: -1;
+}
+
+.bubble-container {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* sfondo dietro il contenuto principale */
+    background-image: url(../images/medias/bubble/student_bubble_bottom.svg);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 50vh, 35vh;
+    }
+
+/* Action list */
+.actions_containter {
+    display: flex;
+    justify-content: space-around;
+    width: 90vw;
+    margin-bottom: 13%;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-top: 10%;
+    }
+
+li {
+    border-width: 0 0 1.5px 0;
+    border-style: solid;
+    padding-bottom: 2px;
+    margin-bottom: 0;
+    margin-top: 0;
+    width : 60vw;
+  }
+  
+  ul {
+    list-style: none;
+    padding-left : 2%;
+  }
+  
+  li::before {
+    content: "";
+    display: inline-block;
+    width: 1.5em;
+    height : 1.2em;
+    margin-left: -1.6em;
+    margin-bottom : -0.2em;
+  
+      /*** COLOR BUBBLE *****/
+    -webkit-mask-image: url(../images/medias/bubble/list_bubble.svg);
+    mask-image: url(../images/medias/bubble/list_bubble.svg);
+    -webkit-mask-size: 85%;
+    mask-size: 85%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+  
+  @media (min-width: 1250px) {
+    li {
+      font-size: 24px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+    ul {
+      box-sizing: border-box;
+      max-width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  /* Action cards */
+  button {
+    width: 90px;
+    height: 90px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65%;
+    margin: 2% auto;
+  }
+  h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 15%;
+  }
+  p {
+    text-align: center;
+    margin: 0;
+  }
+  
+  .action-item {
+    width: 30vw;
+  }
+
+  /* POP-UP card */
+  .popup {
+    display: none; /* La finestra modale è inizialmente nascosta */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    z-index: 9999; /* Assicura che la finestra modale sia sopra tutti gli altri elementi */
+    /*justify-content: center;
+    align-items: center;*/
+  }
+
+  .modal-body{
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 60%; 
+    height: 60%;
+    border-radius: 20px;
+    background-color: white;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  
+   /* background-image: url(../images/medias/bubble/Flower_popUp_greenhouse.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-size: 20px;
+    text-align: center;*/
+    
+  }
+  
+ /* .modal-body::before {
+    width: 100%;
+    height: 30vh;
+    display: block;
+    position: relative;
+    top: 3%;
+    left: 0;
+    content: "";
+    /*** BUBBLE WITH MASCOT *****/
+  /*  background-image: url(../images/medias/bubble/mascot_bubble.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }*/
+
+  .btn-container{
+    display: flex;
+    justify-content: space-evenly;
+    width : 50%;
+    margin:  auto;
+    margin-top: 4%;
+    margin-bottom: 10%;
+  }
+  

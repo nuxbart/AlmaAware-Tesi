@@ -41,11 +41,8 @@
       </select>
     </div>
     <div id="badges-container" class="badges-container">
-      
-      <!--<Badge v-for="badge in listBadges" :name="badge.Badge" :sdg="badge.SDG" :subtitle="badge.Subtitle" :description="badge.Description" :state="badge.State"  :image="badge.Image" >
-      </Badge>-->
+      <!-- Badges & POP-UP -->
     </div>
-
     <nav>
         <a href="../php/home.php"><img src="../images/medias/components/icons/home.svg" class="icon"/></a>
         <!--mobile version -->
@@ -56,12 +53,13 @@
     </nav>
 
   </main>
-  <script src="../js/badges.js"></script>
+  
   <script>
     window.onload = function() {
       changeSdg(0,<?php echo $userSessionID[0]['idUser']; ?>);
     }
   </script>
+  <script src="../js/badges.js"></script>
 </body>
 
 <style lang="css" scoped>
@@ -82,6 +80,11 @@
     margin: 0;
     font-weight: 100;
     width: 90%;
+  }
+
+  .btn-background {
+    color : white;
+    border: none;
   }
 </style>
 </html>

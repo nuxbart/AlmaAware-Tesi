@@ -169,6 +169,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
+    // Funzione che prende i badges di un Sdg
+    public function getSdgBadges($idgoalsdg){
+        $query = "SELECT * FROM badge_sdg WHERE idSdg=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idgoalsdg);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
     // Funzione che prende i badge SDG di un utente
     public function getAllBadgeSdgOfUser($idUser){
         $query = "SELECT * FROM badgesusers WHERE idUser=?";

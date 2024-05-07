@@ -45,4 +45,78 @@ main {
     box-sizing: border-box;
   } 
 
+  /* style dei POP-UP*/
+  button {
+    font-size: 14px;
+  }
+  
+  .popup{
+    display: none; /* La finestra modale è inizialmente nascosta */
+    position: fixed;
+    /*top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+    z-index: 9999; /* Assicura che la finestra modale sia sopra tutti gli altri elementi */
+    /*justify-content: center;
+    align-items: center;*/
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 60%; 
+    height: 60%;
+    /*margin:0;*/
+    border-radius: 20px;
+    background-color: white;
+    
+  }
+
+  .modal-header {
+    position: fixed;
+    margin: 5vh auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .modal-header::before {
+    width: 50vw;
+    height: 23vh;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+  
+    content: "";
+    /*** COLOR BUBBLE *****/
+  
+    -webkit-mask-image: url(../images/medias/bubble/popUp_bubble.svg);
+    mask-image: url(../images/medias/bubble/popUp_bubble.svg);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    /*** LINE BUBBLE *****/
+    background-position: center, center;
+    background-size: contain, 7vh;
+    background-repeat: no-repeat;
+  }
+
+  .modal-header h2 {
+    text-align: center;
+    font-family: 'Viga', sans-serif;
+    font-size: 30px;
+    margin: 0;
+  }
+  .modal-header h3 {
+    font-family: 'Inter',sans-serif ;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+  }
   
