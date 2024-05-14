@@ -5,7 +5,6 @@ main {
     background-repeat: no-repeat;
     background-position: left top;
     background-size: 17vh, 50vh, 35vh;
-    z-index: -1;
 }
 
 .bubble-container {
@@ -106,8 +105,8 @@ li {
   }
 
   /* POP-UP card */
-  .popup {
-    display: none; /* La finestra modale è inizialmente nascosta */
+  .popup-container {
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
@@ -115,8 +114,8 @@ li {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
     z-index: 9999; /* Assicura che la finestra modale sia sopra tutti gli altri elementi */
-    /*justify-content: center;
-    align-items: center;*/
+    justify-content: center;
+    align-items: center;
   }
 
   .modal-body{
@@ -135,15 +134,7 @@ li {
     align-items: center;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  
-   /* background-image: url(../images/medias/bubble/Flower_popUp_greenhouse.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: 20px;
-    text-align: center;*/
-    
-  }
+ }
   
  /* .modal-body::before {
     width: 100%;
@@ -168,4 +159,5 @@ li {
     margin-top: 4%;
     margin-bottom: 10%;
   }
+  
   
