@@ -22,6 +22,7 @@
     <main>
         <div class="bubble-container"></div>
         <div class="mobile-only-div">
+        <a href="../php/badges.php"><img src="../images/medias/components/icons/arrow-back.svg" class="icon"/></a>
             <p>Hi <?php echo $_SESSION["name"];?> !</p>
         </div>
         <h1>What we can do ?</h1>

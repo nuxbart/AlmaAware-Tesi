@@ -20,7 +20,6 @@
     <main>
 
         <div class="mobile-only-div">
-        <a href="../php/home.php"><img src="../images/medias/components/icons/arrow-back.svg" class="icon"/></a>
             <p>Hi <?php echo $_SESSION["name"];?> !</p>
         </div>
 
