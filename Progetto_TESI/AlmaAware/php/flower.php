@@ -20,8 +20,8 @@
       <p>Hi <?php echo $_SESSION["name"];?> !</p>
     </div>
     <h1>My flower</h1>
-    <?php $idMyFlower=$dbh->getIDFlower($_SESSION["email"]); 
-          $myFlower=$dbh->getUserFlower($idMyFlower);?>
+    <?php $idMyFlower=$dbh->getIDFlower($_SESSION["email"]); //var_dump($idMyFlower[0]["idMyFlower"]);
+          $myFlower=$dbh->getUserFlower($idMyFlower[0]["idMyFlower"]);?>
     <div class="flower">
       <?php if(!$myFlower[0]['typeFlower1']):?>
         <img id="flower1" class="hidden" style="width: 40px; height: 40px; position: absolute; top: 0%; left: -8%;" src="../images/medias/flower1.png"/>

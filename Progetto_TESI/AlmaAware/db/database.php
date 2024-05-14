@@ -179,6 +179,27 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
+    // funzione che inserisce un badge di un nuovo utente
+    public function insertNewBadge($idbadge, $validated, $nameBadge, $idUser, $idSdg, $image){
+        $query = "INSERT INTO badgesusers(idbadge, validated, nameBadge, idUser, idSdg, image) values(?,?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iisiis', $idbadge, $validated, $nameBadge, $idUser, $idSdg, $image);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } 
+
+    // funzione che recupera l'ultimo idBadge assegnato
+    public function getLastIdBadge(){
+        $query = "SELECT MAX(`idbadge`) as `idbadge` FROM `badgesusers` ORDER BY `idbadge`;"; 
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // Funzione che prende i badge SDG di un utente
     public function getAllBadgeSdgOfUser($idUser){
         $query = "SELECT * FROM badgesusers WHERE idUser=?";
@@ -208,6 +229,19 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    // MY FLOWER
+
+    // funzione che inserisce un nuovo fiore
+    public function insertNewFlower($idMyFlower, $nameFlower, $colorPot, $typeFlower1, $typeFlower2, $typeFlower3){
+        $query = "INSERT INTO myflower(idMyFlower, nameFlower, colorPot, typeFlower1, typeFlower2, typeFlower3) values(?,?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issiii', $idMyFlower, $nameFlower, $colorPot, $typeFlower1, $typeFlower2, $typeFlower3);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    } 
 
     // Funzione che prende l'idMyFlower dell utente in questione
     public function getIDFlower($emailUser){

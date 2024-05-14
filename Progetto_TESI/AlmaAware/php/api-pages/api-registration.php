@@ -16,9 +16,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $success = false;
         } else {
             $msg= "Registration done sucessfully";
+            // id User
             $idUser=$dbh->getLastIdUser();
-            /* $idMyFlower=$dbh->getLastIdMyFlower(); $idMyFlower[0]["idMyFlower"]+1 */
-            $reg= $dbh->registration($idUser[0]["idUser"]+1, $email, $name, $campus, $password, "../images/medias/user.svg", NULL);
+            $idUserCurr=$idUser[0]["idUser"]+1;
+            // id MyFlower
+            $idMyFlower=$dbh->getLastIdMyFlower(); 
+            $idMyFlowerCurr=$idMyFlower[0]["idMyFlower"]+1;
+            $dbh->insertNewFlower($idMyFlowerCurr, "name" , NULL, NULL, NULL, NULL);
+            
+            // registration
+            $reg= $dbh->registration($idUserCurr, $email, $name, $campus, $password, "../images/medias/user.svg", $idMyFlowerCurr);
+
+            // initialization sdg badges users
+            $allbadges=$dbh->getAllBadgeSdg();
+            foreach($allbadges as $badge){
+                $idbadge=$dbh->getLastIdBadge();
+                $idbadgeCurr=$idbadge[0]["idbadge"]+1;
+                //var_dump($badge);
+                $dbh->insertNewBadge($idbadgeCurr, 0, $badge["badgeName"], $idUserCurr, $badge["idSdg"], $badge["img_unvalid"]);
+            }
+
             $success = true;
         }
     
