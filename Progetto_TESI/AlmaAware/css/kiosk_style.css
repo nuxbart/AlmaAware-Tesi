@@ -114,5 +114,122 @@ main {
     padding: 2%;
   }
 
-  /* Cosa puoi fare tu CSS */
-  
+/* Visualizzazione mobile */
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+  main {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: auto;
+      grid-template-columns: none;
+      grid-template-areas: none;
+      overflow-y: auto;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+
+  .sdg-container, .actions {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+.actions{
+    /* SDG_line */
+    border-top : 5px solid;
+    border-image-source:url(../images/medias/SGD_line.svg);
+    border-image-slice:5;
+    border-image-repeat: stretch;
+    
+    /* box-shadow : X Y blur Spreat Color */
+    box-shadow: 0px -4px 10px 0px rgba(0, 0, 0, 0.15);
+  }
+  .sdg-item {
+      width: 100%;
+      height: auto;
+      margin: 5% auto;
+  }
+
+  .keyCard_container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+  }
+  .actionList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 5%;
+  }
+
+  .keyCard_container button {
+    width: auto;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .sdgNumber {
+      width: 90%;
+      height: auto;
+      margin: 10px 0;
+  }
+
+  .actions {
+      padding: 5%;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .actions h2, .actions p {
+      text-align: center;
+  }
+
+  .keyNumber_container {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .test {
+      width: 100%;
+      height: auto;
+      left: 0;
+      box-sizing: border-box;
+  }
+
+  li {
+      width: auto;
+      margin: 10px auto;
+      font-size: 11px;
+      box-sizing: border-box;
+  }
+
+  ul {
+      padding-left: 0;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  li::before {
+      display: none;
+  }
+  /* Ridurre le dimensioni del testo sui dispositivi mobili */
+  h1 {
+    font-size: 30px;
+}
+h2 {
+    font-size: 20px;
+}
+p {
+    font-size: 11px;
+}
+}

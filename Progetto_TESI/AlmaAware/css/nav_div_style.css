@@ -27,7 +27,7 @@ h1{
     flex-direction: column;
     justify-content:flex-start;
     align-items: center;
-    height : calc(100vh - 6vh - 8vh);
+    height : calc(100vh - 8vh);
     overflow-y: auto;
   }
 

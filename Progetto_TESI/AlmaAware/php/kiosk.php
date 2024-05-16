@@ -58,7 +58,7 @@
               </button>
             </div>
           </div>
-          <div>
+          <div class="actionList">
             <h2>Cosa puoi fare tu?</h2>
             <?php $actions = $dbh->getActionsSdg($currentSDG[0]['idgoalsdg']);?>
             <?php foreach($actions as $action): ?>
@@ -86,14 +86,6 @@
 </body>
 
 <style lang="css">
-.keyCard_container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 350px;
-  justify-content: center;
-  align-content: space-between;
-  padding: 0;
-}
 .info::before {
   content: "";
   background-image: url(../images/medias/pictos/info.svg);
@@ -110,7 +102,7 @@
 
 .numberCard {
   font-family: 'Viga', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   margin: 0;
   position: relative;
@@ -153,7 +145,7 @@
 }
 
 .titleCard {
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   padding: 0;
   margin: 0 0 10px 0;
@@ -164,12 +156,17 @@
     border-style: solid;
     padding-bottom: 2px;
     margin-bottom: 5%;
-    width : 60vw;
+    width: auto;
+    margin: 10px auto;
+    font-size: auto;
+    box-sizing: border-box;
   }
   
   ul {
     list-style: none;
     padding-left : 2%;
+    width: 100%;
+    box-sizing: border-box;
   }
   
 li::before {
@@ -191,9 +188,9 @@ li::before {
     -webkit-mask-position: center;
     mask-position: center;
 }
-    .keyNumber_container {
+  .keyNumber_container {
   display: flex;
-  flex-wrap: no wrap;
+  flex-direction: column;
   width: auto;
   justify-content: center;
   padding: 0;
@@ -300,11 +297,16 @@ li::before {
     justify-content: space-between;
     align-content: space-between;
     padding:0;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    justify-content: center;
   }
     .sdgNumber{
     width: 25vh;
     height: 25vh;
     margin: 0;
+    margin-left: 2%;
     padding : 1%;
   }
   .sdgNumber p {
