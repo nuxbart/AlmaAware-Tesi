@@ -7,7 +7,6 @@
   }
   .sdg_card{
     margin : 15px 15px 0px 15px;
-
     width: calc(100vw / 2 - 40px);
     height: calc(100vw / 2);
     display: flex;
@@ -24,9 +23,8 @@
     border-style: solid;
     /*border color is define with with the style balise of the object**/
   }
-  .sdg_card:nth-child(even){
-    margin-top:40px;
 
+  .sdg_card:nth-child(even){
     width: calc(100vw / 2 - 40px);
     height: calc(100vw / 2);
     display: flex;
@@ -61,59 +59,6 @@
     margin:0;
     padding:0;
   }
-  
-  footer{
-    margin:0;
-    padding:0;
-  }
-
-  header{
-    margin:0;
-    padding:0;
-  }
-
-  main{
-    margin:0;
-    padding:0;
-    display : flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height : calc(100vh - 6vh - 8vh);
-  }
-
-  a{
-    text-decoration: none;
-  }
-
-  /*.icon{
-    width :4vh;
-    height : 4vh;
-    fill : black;
-  }*/
-/*-------------------*/
-
-/* AGGIUNTA PER IL "nav" */
-/*nav{
-  background-color: #F0EDE8;
-  display:flex;
-  justify-content: space-evenly;
-  align-items: center;
-  
-  
-  border-top : 5px solid;
-  border-image-source:url(../images/medias/SGD_line.svg);
-  border-image-slice:5;
-  border-image-repeat: stretch;
- 
-  box-shadow: 0px -4px 10px 0px rgba(0, 0, 0, 0.15);
-
-  position : sticky;
-  bottom : 0;
-  left : 0;
-  width:100%;
-  height:8vh;
-}*/
 
   @media (min-width: 1250px) {
     .sdg_card:nth-child(even){
@@ -136,6 +81,7 @@
       background-repeat: no-repeat;
       background-size: 40%;
       background-position: right -2%;
+      margin-top: 12vh;
     }
   
     /* add the mascot */
