@@ -1,6 +1,6 @@
 h1{
     font-family:'Viga', sans-serif;
-    font-size: 350%;
+    /*font-size: 350%;*/
   }
   
   body{
@@ -109,7 +109,7 @@ nav{
 
   h1{
     font-family:'Viga', sans-serif;
-    font-size: 200%;
+    /*font-size: 100%;*/
   }
   
   /* Per il DIV iniziale visibile solo da mobile */
