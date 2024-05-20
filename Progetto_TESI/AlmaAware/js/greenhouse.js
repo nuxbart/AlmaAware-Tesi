@@ -17,11 +17,12 @@ document.getElementById('btn-unibo').addEventListener('click', function() {
     axios.post('../php/api-pages/api-greenhouse.php', formData)
         .then(response => {
             console.log(response.data);
-            if(response.data) {
+            console.log(response.data["JoinEseguito"]);
+            if(response.data["JoinEseguito"]) {
                 alert("Joined successfully!");
                 window.location.reload();
             }else{
-                alert("Joined failed! " + response.data.message);
+                alert("Joined failed! " + response.data["error"]);
                 window.location.reload();
             }
         })

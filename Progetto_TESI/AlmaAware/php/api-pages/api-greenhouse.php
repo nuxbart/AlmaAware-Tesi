@@ -6,16 +6,22 @@ $result["JoinEseguito"] = false;
 
 	if(isset($_POST["email"])) {
         $idMyFlower=$dbh->getIDFlower($_POST["email"]);
-		$join_result = $dbh->joinGreenhouse("Y",$idMyFlower[0]["idMyFlower"]);
 		
-		if($join_result) {
-			$result["JoinEseguito"] = true;
+		if($idMyFlower){
+			$join_result = $dbh->joinGreenhouse("Y",$idMyFlower[0]["idMyFlower"]);
+		
+			if($join_result) {
+				$result["JoinEseguito"] = true;
+			}else{
+				//Join alla serra fallito
+				$result["error"] = "Non riuscita join nella serra!";
+			}
 		}else{
-            //Join alla serra fallito
-            $result["error"] = "Email non presente nel DB!";
-        }
+			$result["error"] = "Email non presente nel DB!";
+		}
+		
 	}
     
 	header('Content-Type: application/json');
-	echo json_encode($result["JoinEseguito"]);
+	echo json_encode($result);
 ?>
