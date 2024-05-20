@@ -357,30 +357,30 @@ class DatabaseHelper{
     }
 
     // PODIO, Funzione che prende idUser con numero di badges completati più alto (1°)
-    public function getFirstPodiumFlowerIdUser(){
+   /* public function getFirstPodiumFlowerIdUser(){
         $query = "SELECT idUser FROM badgesUsers WHERE validated = 1 GROUP BY idUser ORDER BY COUNT(*) DESC LIMIT 1";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    }*/
 
     // PODIO, Funzione che prende idUser con numero di badges completati secondo più alto (2°)
-    public function getSecondPodiumFlowerIdUser(){
+   /* public function getSecondPodiumFlowerIdUser(){
         $query = "SELECT idUser FROM badgesUsers WHERE validated = 1 GROUP BY idUser ORDER BY COUNT(*) DESC LIMIT 2 OFFSET 1;";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    }*/
 
     // PODIO, Funzione che prende idUser con numero di badges completati terzo più alto (3°)
-    public function getThirdPodiumFlowerIdUser(){
+    /*public function getThirdPodiumFlowerIdUser(){
         $query = "SELECT idUser FROM badgesUsers WHERE validated = 1 GROUP BY idUser ORDER BY COUNT(*) DESC LIMIT 3 OFFSET 2;";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    }*/
 }
 ?>
