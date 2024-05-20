@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // id MyFlower
             $idMyFlower=$dbh->getLastIdMyFlower(); 
             $idMyFlowerCurr=$idMyFlower[0]["idMyFlower"]+1;
-            $dbh->insertNewFlower($idMyFlowerCurr, "name" , NULL, NULL, NULL, NULL);
+            $dbh->insertNewFlower($idMyFlowerCurr, "name" , NULL, "N", NULL, NULL, NULL);
             
             // registration
             $reg= $dbh->registration($idUserCurr, $email, $name, $campus, $password, "../images/medias/user.svg", $idMyFlowerCurr);

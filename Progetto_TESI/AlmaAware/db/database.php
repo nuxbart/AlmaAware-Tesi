@@ -233,10 +233,10 @@ class DatabaseHelper{
     // MY FLOWER
 
     // funzione che inserisce un nuovo fiore
-    public function insertNewFlower($idMyFlower, $nameFlower, $colorPot, $typeFlower1, $typeFlower2, $typeFlower3){
-        $query = "INSERT INTO myflower(idMyFlower, nameFlower, colorPot, typeFlower1, typeFlower2, typeFlower3) values(?,?,?,?,?,?)";
+    public function insertNewFlower($idMyFlower, $nameFlower, $colorPot, $showInGreenhouse, $typeFlower1, $typeFlower2, $typeFlower3){
+        $query = "INSERT INTO myflower(idMyFlower, nameFlower, colorPot, showInGreenhouse, typeFlower1, typeFlower2, typeFlower3) values(?,?,?,?,?,?,?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('issiii', $idMyFlower, $nameFlower, $colorPot, $typeFlower1, $typeFlower2, $typeFlower3);
+        $stmt->bind_param('isssiii', $idMyFlower, $nameFlower, $colorPot, $showInGreenhouse, $typeFlower1, $typeFlower2, $typeFlower3);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -280,6 +280,14 @@ class DatabaseHelper{
         return $stmt->affected_rows > 0;
     }
 
+    public function joinGreenhouse($yes, $idMyFlower) {
+        $query = "UPDATE myflower SET showInGreenhouse= ? WHERE idMyFlower = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $yes, $idMyFlower);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+
     public function updateFlowerType1($boolType, $idMyFlower) {
         $query = "UPDATE myflower SET typeFlower1= ? WHERE idMyFlower = ?";
         $stmt = $this->db->prepare($query);
@@ -313,6 +321,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
+    //Funzione prende i fiori della serra (che hanno consenso di essere mostrati)
+    public function getAllFlowersGreenHouse($yes){
+        $query = "SELECT * FROM myflower WHERE showInGreenhouse = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $yes);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
     // Funzione che prende l'idMyFlower da idUser
     public function getIdFlowerFromIdUser($idUser){
         $query = "SELECT idMyFlower FROM user WHERE idUser=?";
@@ -322,6 +340,21 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
+
+    // PODIO
+    public function getPodium(){
+        $query = "SELECT u.idUser, COUNT(bu.idbadge) AS badgeCount 
+        FROM user u 
+        JOIN myflower mf ON u.idMyFlower = mf.idMyFlower 
+        JOIN badgesusers bu ON u.idUser = bu.idUser 
+        WHERE mf.showInGreenhouse = 'Y' 
+        AND bu.validated = 1 
+        GROUP BY u.idUser ORDER BY badgeCount DESC LIMIT 3";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     // PODIO, Funzione che prende idUser con numero di badges completati più alto (1°)
     public function getFirstPodiumFlowerIdUser(){

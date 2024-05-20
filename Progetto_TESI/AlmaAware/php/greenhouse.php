@@ -33,7 +33,7 @@
         <main>
             <div class="greenhouse">
                 <div class="shelf-container">
-                    <?php $listFlowers=$dbh->getAllFlowers();?>
+                    <?php $listFlowers=$dbh->getAllFlowersGreenHouse("Y");?>
                     <?php $numRows = ceil(count($listFlowers) / 3); 
                     for ($row = 0; $row < $numRows; $row++): ?>
                         <div class="shelf">
@@ -61,19 +61,18 @@
                 </div>
                 <div class="podium">
                     <?php 
+                        $podiumFlowers=$dbh->getPodium();
+
                         //First flower
-                        $idUserFirstPodium=$dbh->getFirstPodiumFlowerIdUser();
-                        $idMyFlowerFirst=$dbh->getIdFlowerFromIdUser($idUserFirstPodium[0]["idUser"]);
+                        $idMyFlowerFirst=$dbh->getIdFlowerFromIdUser($podiumFlowers[0]["idUser"]);
                         $firstFlower=$dbh->getUserFlower($idMyFlowerFirst[0]["idMyFlower"]);
                         
                         //Second flower
-                        $idUserSecondPodium=$dbh->getSecondPodiumFlowerIdUser();
-                        $idMyFlowerSecond=$dbh->getIdFlowerFromIdUser($idUserSecondPodium[0]["idUser"]);
+                        $idMyFlowerSecond=$dbh->getIdFlowerFromIdUser($podiumFlowers[1]["idUser"]);
                         $secondFlower=$dbh->getUserFlower($idMyFlowerSecond[0]["idMyFlower"]);
 
                         //Third flower
-                        $idUserThirdPodium=$dbh->getThirdPodiumFlowerIdUser();
-                        $idMyFlowerThird=$dbh->getIdFlowerFromIdUser($idUserThirdPodium[0]["idUser"]);
+                        $idMyFlowerThird=$dbh->getIdFlowerFromIdUser($podiumFlowers[2]["idUser"]);
                         $thirdFlower=$dbh->getUserFlower($idMyFlowerThird[0]["idMyFlower"]);
                         ?>
                     <div id="second-item">
@@ -157,17 +156,7 @@
                 <a href="../php/greenhouse.php" class="desktop-only"><img src="../images/medias/components/icons/greenhouse.svg" class="icon"/></a>
             </nav>
         </main>
-        <script>
-            // Funzione per aprire la finestra modale
-            document.getElementById('show-modal').addEventListener('click', function() {
-                document.getElementById('modal').style.display = 'flex';
-            });
-
-            // Funzione per chiudere la finestra modale
-            document.getElementById('btn-unibo-outline').addEventListener('click', function() {
-                document.getElementById('modal').style.display = 'none';
-            });
-        </script>
+        <script src="../js/greenhouse.js"></script>
     </body>
 </html>
 
