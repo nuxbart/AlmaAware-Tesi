@@ -67,15 +67,19 @@
                                 </div>  
                             <?php elseif($badge['type']=="Quiz"): ?>
                                 <p>Quiz!</p>
+                                <!-- DA FARE -->
                             <?php elseif($badge['type']=="QR-Code"): ?>
                                 <p>QR-Code!</p>
+                                <!-- TROVARE FOTO QR-Code -->
                             <?php elseif($badge['type']=="Timer"): ?>
                                 <p>Timer!</p>
+                                <!-- DA FARE -->
                             <?php elseif($badge['type']=="Link"): ?>
                                 <p><?php echo $badge["subtitle"]; ?></p>
                                 <a href="../php/greenhouse.php">Clicca qui</a>
                             <?php endif; ?>
                             <div class="btn-container">
+                                <!-- DA FARE -->
                                 <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
                             </div>
                         </div>
