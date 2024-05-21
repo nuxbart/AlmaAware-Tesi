@@ -220,6 +220,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Funzione che dato il nome di un badge e l'idUser ne seleziona il badge corrispondente
+    public function getBadgeSDGUser($idUser, $nameBadge){
+        $query = "SELECT * FROM badgesusers WHERE idUser=? AND nameBadge=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is',$idUser, $nameBadge);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // Funzione che prende i badge di un utente con filtro un determinato SDG
     public function getAllBadgeOneSdg($i, $userSessionID){
         $query = "SELECT * FROM badgesusers WHERE idSdg=? AND idUser=?";
@@ -228,6 +238,15 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Funzione che aggiorna il conteggio counter di un sdg di un utente
+    function updateBadgeCounter($type, $idbadge){
+        $query = "UPDATE badgesusers SET type= ? WHERE idbadge = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$type, $idbadge);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
     }
 
     // MY FLOWER

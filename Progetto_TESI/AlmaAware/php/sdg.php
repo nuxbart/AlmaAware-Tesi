@@ -50,6 +50,30 @@
                     <div id="action-details-<?php echo $index; ?>" style="display:none;">
                         <div class="modal-body">
                             <p style="font-size: 24px; font-weight: bold;"><?php echo $badge['type']; ?></p>
+                            <?php $idUser=$dbh->getIdUser($_SESSION["email"]); 
+                            $badgeSDGUserCurr=$dbh->getBadgeSDGUser($idUser[0]["idUser"], $badge["badgeName"]);?>
+                            <?php if($badge['type']=="Counter"):?>
+                                <button id="btn-counter" class="btn-counter" onclick="increase(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, <?php echo $badgeSDGUserCurr[0]['type'];?>, this)" 
+                                        style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>; border-radius: 25px; width: 100px; height: auto;">
+                                    <p id="counter-txt" class="counter-txt"><?php echo $badgeSDGUserCurr[0]['type']; ?><p>
+                                </button>
+                            <?php elseif($badge['type']=="Input"): ?>
+                                <label class="label" for="inputSDG"><?php echo $badge["subtitle"]; ?></label>
+                                <input type="text" id="inputSDG" name="inputSDG" class="inputSDG" placeholder="Input"/>
+                            <?php elseif($badge['type']=="Checkbox"): ?>
+                                <div>
+                                    <input class="checkbox" type="checkbox" value="" id="checkbox"/>
+                                    <label class="checkbox-label" for="checkbox"> <?php echo $badge["subtitle"]; ?> </label>
+                                </div>  
+                            <?php elseif($badge['type']=="Quiz"): ?>
+                                <p>Quiz!</p>
+                            <?php elseif($badge['type']=="QR-Code"): ?>
+                                <p>QR-Code!</p>
+                            <?php elseif($badge['type']=="Timer"): ?>
+                                <p>Timer!</p>
+                            <?php elseif($badge['type']=="Link"): ?>
+                                <p>Link!</p>
+                            <?php endif; ?>
                             <div class="btn-container">
                                 <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
                             </div>
