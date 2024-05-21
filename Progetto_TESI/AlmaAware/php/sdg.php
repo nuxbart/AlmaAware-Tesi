@@ -59,10 +59,10 @@
                                 </button>
                             <?php elseif($badge['type']=="Input"): ?>
                                 <label class="label" for="inputSDG"><?php echo $badge["subtitle"]; ?></label>
-                                <input type="text" id="inputSDG" name="inputSDG" class="inputSDG" placeholder="Input"/>
+                                <input type="text" id="inputSDG" name="inputSDG" class="inputSDG" placeholder="<?php if ($badgeSDGUserCurr[0]['type']!=null): echo $badgeSDGUserCurr[0]['type']; else: echo "Input"; endif;?>"/>
                             <?php elseif($badge['type']=="Checkbox"): ?>
                                 <div>
-                                    <input class="checkbox" type="checkbox" value="" id="checkbox"/>
+                                    <input class="checkbox" type="checkbox" value="" id="checkbox" <?php if ($badgeSDGUserCurr[0]['type']==1): echo "checked"; endif;?>/>
                                     <label class="checkbox-label" for="checkbox"> <?php echo $badge["subtitle"]; ?> </label>
                                 </div>  
                             <?php elseif($badge['type']=="Quiz"): ?>
@@ -72,7 +72,8 @@
                             <?php elseif($badge['type']=="Timer"): ?>
                                 <p>Timer!</p>
                             <?php elseif($badge['type']=="Link"): ?>
-                                <p>Link!</p>
+                                <p><?php echo $badge["subtitle"]; ?></p>
+                                <a href="../php/greenhouse.php">Clicca qui</a>
                             <?php endif; ?>
                             <div class="btn-container">
                                 <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
