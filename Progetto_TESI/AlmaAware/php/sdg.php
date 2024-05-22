@@ -80,7 +80,11 @@
                             <?php endif; ?>
                             <div class="btn-container">
                                 <!-- DA FARE -->
-                                <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
+                                <?php if($badgeSDGUserCurr[0]['validated']==0): ?>
+                                    <button id="btn-unibo-outline" class="btn-unibo-outline" onclick="validate(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>,<?php echo $badgeSDGUserCurr[0]['type']; ?>, '<?php echo $badge['badgeName']; ?>' )" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
+                                <?php else: ?>
+                                    <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: grey;">Validated</button>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

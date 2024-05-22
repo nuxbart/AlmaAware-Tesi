@@ -24,6 +24,28 @@ function increase(badgeId, currentCount, element) {
         }
     });
 }
+function validate(idbadgecurr, typeCurr, badgeName){
+    $.ajax({
+        url: '../php/api-pages/api_validate_badge_sdg.php',
+        type: 'GET',
+        data: {
+            idbadgecurr: idbadgecurr,
+            typeCurr: typeCurr,
+            badgeName: badgeName
+        },
+        success: function(response) {
+            const data = JSON.parse(response);
+            if (data.success) {
+                console.log(data);
+                alert('Badge SDG validato correttamente!');
+                window.location.reload();
+            }
+        },
+        error: function() {
+            alert('Errore durante la validazione del Badge SDG');
+        }
+    });
+}
 $(document).ready(function(){
     
     $('.show-modal').click(function(){

@@ -169,6 +169,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     } 
 
+    // Funzione che valida un badge specifico di un user
+    public function setValidateBadgeUser($valid, $idBadgeCurrUser){
+        $query = "UPDATE badgesusers SET validated= ? WHERE idbadge = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is',$valid, $idBadgeCurrUser);
+        $stmt->execute();
+        return $stmt->affected_rows > 0;
+    }
+    
     // Funzione che prende i badges di un Sdg
     public function getSdgBadges($idgoalsdg){
         $query = "SELECT * FROM badge_sdg WHERE idSdg=?";
