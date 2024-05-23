@@ -258,6 +258,15 @@ class DatabaseHelper{
         return $stmt->affected_rows > 0;
     }
 
+    function getIdUserFromBadgesUsersTable($idBadgeCurrUser){
+        $query = "SELECT idUser FROM badgesusers WHERE idbadge=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idBadgeCurrUser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // MY FLOWER
 
     // funzione che inserisce un nuovo fiore

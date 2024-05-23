@@ -2,21 +2,56 @@
 require_once '../../db/bootstrap.php';
 require_once '../../db/database.php';
 
-if (isset($_GET['typeCurr']) && isset($_GET['badgeName'])) {
+if (isset($_GET['typeCurr']) && isset($_GET['badgeName']) && isset($_GET['idbadgecurr'])) {
+
     $idBadgeCurrUser = $_GET['idbadgecurr'];
     $typeCurr = $_GET['typeCurr'];
     $badgeName = $_GET['badgeName'];
     $success=false;
 
     $counter_times=$dbh->getBadgeSdg($badgeName)[0]['counter_times'];
-    
-    // Caso del counter
-    if($counter_times==$typeCurr){
-        $success=true;
-        $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+    $typePopUP=$dbh->getBadgeSdg($badgeName)[0]['type'];
+
+    if($typePopUP=="Counter"){
+        if($counter_times==$typeCurr){
+            $success=true;
+            $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+        }
+
+    }elseif($typePopUP=="Input"){
+        if (isset($_GET['inputValue'])) {
+            $inputValue = $_GET['inputValue'];
+            if ($inputValue <= $counter_times) { 
+                $success = true;
+                $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+                $dbh->updateBadgeCounter($inputValue, $idBadgeCurrUser); // setto valore input nel db
+            }
+        }
+
+    }elseif($typePopUP=="Checkbox"){
+        if (isset($_GET['checkboxChecked']) && $_GET['checkboxChecked'] == 'true') {
+            $success = true;
+            $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+            $dbh->updateBadgeCounter(1, $idBadgeCurrUser); // setto 'true' nel db (cioè =1)
+        }
+
+    }elseif($typePopUP=="Quiz"){
+
+    }elseif($typePopUP=="QR-Code"){
+
+    }elseif($typePopUP=="Timer"){
+
+    }elseif($typePopUP=="Link"){
+        // devo guardare se utente è collegato alla serra
+        $idUser=$dbh->getIdUserFromBadgesUsersTable($idBadgeCurrUser);
+        $idMyFlower=$dbh->getIdFlowerFromIdUser($idUser);
+        $isShown=$dbh->getUserFlower($idMyFlower)[0]['showInGreenhouse'];
+
+        if($isShown=='Y'){
+            $success = true;
+            $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+        }
     }
-    // Da gestire: CheckBox, Quiz, link, timer
-    // ..
 
     // Restituisci il nuovo valore come risposta JSON
     echo json_encode(['success' => $success]);

@@ -40,18 +40,20 @@
             <?php $index = 0; ?>
             <?php foreach($badges as $badge): ?>
                 <div class="action-item">
-                    <button class="show-modal" data-action-id="<?php echo $index; ?>" 
+                <?php $idUser=$dbh->getIdUser($_SESSION["email"]); 
+                    $badgeSDGUserCurr=$dbh->getBadgeSDGUser($idUser[0]["idUser"], $badge["badgeName"]);?>
+
+                    <button class="show-modal" data-action-id="<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" data-input-id="<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>"
                     style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;
                     background-image: url(<?php echo $badge["badge_icon"]; ?>);"></button>
                     
                     <p><?php echo $badge["subtitle"]; ?></p>
 
                     <!-- POP-UP -->
-                    <div id="action-details-<?php echo $index; ?>" style="display:none;">
+                    <div id="action-details-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" style="display:none;">
                         <div class="modal-body">
                             <p style="font-size: 24px; font-weight: bold;"><?php echo $badge['type']; ?></p>
-                            <?php $idUser=$dbh->getIdUser($_SESSION["email"]); 
-                            $badgeSDGUserCurr=$dbh->getBadgeSDGUser($idUser[0]["idUser"], $badge["badgeName"]);?>
+                            
                             <?php if($badge['type']=="Counter"):?>
                                 <button id="btn-counter" class="btn-counter" onclick="increase(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, <?php echo $badgeSDGUserCurr[0]['type'];?>, this)" 
                                         style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>; border-radius: 25px; width: 100px; height: auto;">
@@ -81,7 +83,10 @@
                             <div class="btn-container">
                                 <!-- DA FARE -->
                                 <?php if($badgeSDGUserCurr[0]['validated']==0): ?>
-                                    <button id="btn-unibo-outline" class="btn-unibo-outline" onclick="validate(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>,<?php echo $badgeSDGUserCurr[0]['type']; ?>, '<?php echo $badge['badgeName']; ?>' )" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
+                                    <button id="btn-unibo-outline" class="btn-unibo-outline" 
+                                    onclick="validate(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>,
+                                    <?php echo isset($badgeSDGUserCurr[0]['type']) ? $badgeSDGUserCurr[0]['type'] : 0;?>, 
+                                    '<?php echo $badge['badgeName']; ?>' )" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
                                 <?php else: ?>
                                     <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: grey;">Validated</button>
                                 <?php endif; ?>

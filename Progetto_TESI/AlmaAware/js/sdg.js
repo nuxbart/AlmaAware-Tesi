@@ -25,14 +25,26 @@ function increase(badgeId, currentCount, element) {
     });
 }
 function validate(idbadgecurr, typeCurr, badgeName){
+    
+    var inputValue= $('#inputSDG-' + idbadgecurr).val();
+    var checkboxChecked= $('#checkbox-' + idbadgecurr).is(':checked');
+    console.log($('#checkbox-' + idbadgecurr));
+    console.log(checkboxChecked);
+    console.log($(idbadgecurr));
+
+    let data = {
+        idbadgecurr: idbadgecurr,
+        typeCurr: typeCurr,
+        badgeName: badgeName,
+        inputValue: inputValue,
+        checkboxChecked: checkboxChecked
+    };
+    
+    // Quiz, QR-Code, Timer, e Link ??????????????
     $.ajax({
         url: '../php/api-pages/api_validate_badge_sdg.php',
         type: 'GET',
-        data: {
-            idbadgecurr: idbadgecurr,
-            typeCurr: typeCurr,
-            badgeName: badgeName
-        },
+        data: data,
         success: function(response) {
             const data = JSON.parse(response);
             if (data.success) {
@@ -55,6 +67,16 @@ $(document).ready(function(){
         
         $('#popup-content').html(actionDetails);
         $('#popup').show();
+
+        $('#popup-content .inputSDG').each(function() {
+            $(this).attr('id', 'inputSDG-' + actionId);
+            //console.log($(this).attr('id', 'inputSDG-' + actionId));
+        });
+
+        $('#popup-content .checkbox').each(function() {
+            $(this).attr('id', 'checkbox-' + actionId);
+            console.log($(this).attr('id', 'checkbox-' + actionId));
+        });
     });
 
     $('#close-popup').click(function(){
