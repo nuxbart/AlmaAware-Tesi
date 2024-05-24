@@ -78,7 +78,6 @@
                                 <div><p id="timer" class="timer">10:00</p></div>
                                 <button id="timer-btn" class="timer-btn" onclick="startTimer(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, <?php echo $badgeSDGUserCurr[0]['type'];?>)">Start Timer</button>
                                 <div>Docce brevi fatte:<p id="timer-counter" class="timer-counter"><?php echo $badgeSDGUserCurr[0]['type']; ?></p></div>
-                                <!-- DA FARE -->
                             <?php elseif($badge['type']=="Link"): ?>
                                 <p><?php echo $badge["subtitle"]; ?></p>
                                 <a href="../php/greenhouse.php">Clicca qui</a>
