@@ -40,6 +40,10 @@ if (isset($_GET['typeCurr']) && isset($_GET['badgeName']) && isset($_GET['idbadg
     }elseif($typePopUP=="QR-Code"){
 
     }elseif($typePopUP=="Timer"){
+        if ($typeCurr >= $counter_times) {
+            $success = true;
+            $dbh->setValidateBadgeUser(1, $idBadgeCurrUser);
+        }
 
     }elseif($typePopUP=="Link"){
         // devo guardare se utente è collegato alla serra

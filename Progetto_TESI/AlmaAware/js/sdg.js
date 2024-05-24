@@ -24,6 +24,57 @@ function increase(badgeId, currentCount, element) {
         }
     });
 }
+function startTimer(badgeId, currentCount) {
+    var timerElement = $('#timer-' + badgeId);
+    console.log(timerElement);
+    var time = 600; // 10 minuti in secondi
+    var interval = setInterval(function() {
+        var minutes = Math.floor(time / 60);
+        var seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        timerElement.text(minutes + ":" + seconds);
+        time--;
+
+        if (time < 0) {
+            clearInterval(interval);
+            // Incrementa il contatore quando il timer scade
+            increaseCounter(badgeId, currentCount);
+        }
+    }, 1000);
+}
+
+function increaseCounter(badgeId, currentCount) {
+    const newCount = currentCount + 1;
+    $('.timer-'+ badgeId).html('1:00');
+    $('.timer-counter').html(newCount);
+    $('.timer-btn').attr('onclick', `startTimer(${badgeId}, ${newCount})`);
+    $.ajax({
+        url: '../php/api-pages/api_increase_counter_sdg.php',
+        type: 'GET',
+        data: {
+            badgeId: badgeId,
+            currentCount: newCount
+        },
+        success: function(response) {
+            const data = JSON.parse(response);
+            if (data.newCounter) {
+                console.log(data);
+                if (data.newCounter > 10) {
+                    alert('Già fatte 10 docce! Valida il badge!');
+                } else {
+                    // Ricomincia il timer se non ha raggiunto il conteggio necessario
+                    $('.timer-'+ badgeId).html('10:00');
+                    $('.timer-counter').html(newCount);
+                    $('.timer-btn').attr('onclick', `startTimer(${badgeId}, ${newCount})`);
+                }
+            }
+        },
+        error: function() {
+            alert('Errore durante l\'aggiornamento del conteggio');
+        }
+    });
+}
+
 function validate(idbadgecurr, typeCurr, badgeName){
     
     var inputValue= $('#inputSDG-' + idbadgecurr).val();
@@ -40,7 +91,7 @@ function validate(idbadgecurr, typeCurr, badgeName){
         checkboxChecked: checkboxChecked
     };
     
-    // Quiz, QR-Code, Timer, e Link ??????????????
+    // Quiz, QR-Code ??????????????
     $.ajax({
         url: '../php/api-pages/api_validate_badge_sdg.php',
         type: 'GET',
@@ -76,6 +127,11 @@ $(document).ready(function(){
         $('#popup-content .checkbox').each(function() {
             $(this).attr('id', 'checkbox-' + actionId);
             console.log($(this).attr('id', 'checkbox-' + actionId));
+        });
+
+        $('#popup-content .timer').each(function() {
+            $(this).attr('id', 'timer-' + actionId);
+            console.log($(this).attr('id', 'timer-' + actionId));
         });
     });
 
