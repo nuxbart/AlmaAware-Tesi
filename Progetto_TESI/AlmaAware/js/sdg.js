@@ -1,3 +1,29 @@
+function submitQuiz(badgeId, type, badgeName) {
+    var selectedOption;
+    var correctAnswer;
+    console.log(type);
+    if (type === "Quiz1") {
+        selectedOption = $('input[name="quiz-1-' + badgeId + '"]:checked').val();
+        console.log(selectedOption);
+        correctAnswer = "30";
+    } else if (type === "Quiz2") {
+        selectedOption = $('input[name="quiz-2-' + badgeId + '"]:checked').val();
+        correctAnswer = "Luce solare";
+    }
+
+    if (!selectedOption) {
+        alert('Per favore, seleziona una risposta.');
+        return;
+    }
+
+    if (selectedOption === correctAnswer) {
+        alert('Risposta corretta!');
+        validate(badgeId, 1, badgeName); // Pass 1 as typeCurr to indicate the quiz was passed
+    } else {
+        alert('Risposta sbagliata. Riprova!');
+    }
+}
+
 function increase(badgeId, currentCount, element) {
     const newCount = currentCount + 1;
     $(element).find('.counter-txt').html(newCount);
@@ -91,7 +117,7 @@ function validate(idbadgecurr, typeCurr, badgeName){
         checkboxChecked: checkboxChecked
     };
     
-    // Quiz, QR-Code ??????????????
+    // QR-Code ??????????????
     $.ajax({
         url: '../php/api-pages/api_validate_badge_sdg.php',
         type: 'GET',

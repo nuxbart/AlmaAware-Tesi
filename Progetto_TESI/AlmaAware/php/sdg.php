@@ -52,7 +52,7 @@
                     <!-- POP-UP -->
                     <div id="action-details-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" style="display:none;">
                         <div class="modal-body">
-                            <p style="font-size: 24px; font-weight: bold;"><?php echo $badge['type']; ?></p>
+                            <p style="font-size: 24px; font-weight: bold;"><?php echo $badge['badgeName']; ?></p>
                             
                             <?php if($badge['type']=="Counter"):?>
                                 <button id="btn-counter" class="btn-counter" onclick="increase(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, <?php echo $badgeSDGUserCurr[0]['type'];?>, this)" 
@@ -67,9 +67,33 @@
                                     <input class="checkbox" type="checkbox" value="" id="checkbox" <?php if ($badgeSDGUserCurr[0]['type']==1): echo "checked"; endif;?>/>
                                     <label class="checkbox-label" for="checkbox"> <?php echo $badge["subtitle"]; ?> </label>
                                 </div>  
-                            <?php elseif($badge['type']=="Quiz"): ?>
-                                <p>Quiz!</p>
-                                <!-- DA FARE -->
+                            <?php elseif($badge['type']=="Quiz1" || $badge['type']=="Quiz2"): ?>
+                                <?php if ($badge['type'] == "Quiz1"): ?>
+                                    <div class="quiz-question" id="question-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">
+                                        <p>Domanda: Quale percentuale di ricercatori nel campo della scienza e la tecnologia sono donne?</p>
+                                        <div class="quiz-options">
+                                            <input type="radio" id="option1-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="50">
+                                            <label for="option1-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">50%</label><br>
+                                            <input type="radio" id="option2-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="30">
+                                            <label for="option2-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">30%</label><br>
+                                            <input type="radio" id="option3-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="70">
+                                            <label for="option3-1-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">70%</label><br>
+                                        </div>
+                                    </div>
+                                <?php elseif ($badge['type'] == "Quiz2"): ?>
+                                    <div class="quiz-question" id="question-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">
+                                        <p>Domanda: Quale di queste è una fonte di energia rinnovabile?</p>
+                                        <div class="quiz-options">
+                                            <input type="radio" id="option1-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="Olio">
+                                            <label for="option1-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">Olio</label><br>
+                                            <input type="radio" id="option2-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="Gas">
+                                            <label for="option2-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">Gas</label><br>
+                                            <input type="radio" id="option3-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" name="quiz-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>" value="Luce solare">
+                                            <label for="option3-2-<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>">Luce solare</label><br>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                             <?php elseif($badge['type']=="QR-Code"): ?>
                                 <p>QR-Code!</p>
                                 <!-- TROVARE FOTO QR-Code -->
@@ -85,9 +109,12 @@
                             <div class="btn-container">
                                 <?php if($badgeSDGUserCurr[0]['validated']==0): ?>
                                     <button id="btn-unibo-outline" class="btn-unibo-outline" 
-                                    onclick="validate(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>,
-                                    <?php echo isset($badgeSDGUserCurr[0]['type']) ? $badgeSDGUserCurr[0]['type'] : 0;?>, 
-                                    '<?php echo $badge['badgeName']; ?>' )" style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
+                                    onclick="<?php if($badge['type']=="Quiz1" || $badge['type']=="Quiz2"):?>  
+                                                    submitQuiz(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, '<?php echo $badge['type']; ?>', '<?php echo $badge['badgeName']; ?>')
+                                            <?php else:?> 
+                                                validate(<?php echo $badgeSDGUserCurr[0]['idbadge']; ?>, <?php echo isset($badgeSDGUserCurr[0]['type']) ? $badgeSDGUserCurr[0]['type'] : 0;?>, '<?php echo $badge['badgeName']; ?>' )
+                                            <?php endif;?>"
+                                            style="background-color: <?php echo colorSdg($currentSDG[0]['idgoalsdg']); ?>;">Validate</button>
                                 <?php else: ?>
                                     <button id="btn-unibo-outline" class="btn-unibo-outline" style="background-color: grey;">Validated</button>
                                 <?php endif; ?>
